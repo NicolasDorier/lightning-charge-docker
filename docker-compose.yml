@@ -60,6 +60,31 @@ services:
       # Let's encrypt settings
       LETSENCRYPT_HOST: ${CHARGED_HOST}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL:-yourname@example.com}
+      SKIP_BITCOIND: 1
+      BITCOIND_HOST: bitcoind
+    volumes:
+      - "bitcoin_datadir:/data/bitcoin"
+      - "lightning_datadir:/data/lightning"
+      # - "charged_datadir:/data/charge.db"
+    links:
+      - bitcoind
+
+  bitcoind:
+    restart: always
+    container_name: btcpayserver_bitcoind
+    image: nicolasdorier/docker-bitcoin:0.15.0.1
+    environment:
+      BITCOIN_EXTRA_ARGS: |
+        rpcport=43782
+        ${NBITCOIN_NETWORK:-regtest}=1
+        port=39388
+        whitelist=0.0.0.0/0
+    expose:
+      - "43782"
+      - "39388"
+    volumes:
+      - "bitcoin_datadir:/data"
+
 
 volumes:
     nginx_conf:
@@ -67,3 +92,5 @@ volumes:
     nginx_html:
     nginx_certs:
     bitcoin_datadir:
+    # charged_datadir:
+    lightning_datadir:
