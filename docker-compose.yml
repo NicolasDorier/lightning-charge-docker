@@ -61,11 +61,10 @@ services:
       LETSENCRYPT_HOST: ${CHARGED_HOST}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL:-yourname@example.com}
       SKIP_BITCOIND: 1
-      BITCOIND_HOST: bitcoind
+      BITCOIND_RPCCONNECT_HACK: bitcoind
     volumes:
-      - "bitcoin_datadir:/data/bitcoin"
-      - "lightning_datadir:/data/lightning"
-      # - "charged_datadir:/data/charge.db"
+      - "bitcoin_datadir:/etc/bitcoin"
+      - "charged_datadir:/data"
     links:
       - bitcoind
 
@@ -92,5 +91,4 @@ volumes:
     nginx_html:
     nginx_certs:
     bitcoin_datadir:
-    # charged_datadir:
-    lightning_datadir:
+    charged_datadir:
