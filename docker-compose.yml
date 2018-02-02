@@ -65,6 +65,8 @@ services:
     volumes:
       - "bitcoin_datadir:/etc/bitcoin"
       - "charged_datadir:/data"
+    expose:
+      - "9735"
     links:
       - bitcoind
 
