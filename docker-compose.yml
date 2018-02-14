@@ -55,7 +55,7 @@ services:
       NETWORK: ${NBITCOIN_NETWORK:-regtest}
       API_TOKEN: ${CHARGED_API_TOKEN}
       VIRTUAL_NETWORK: nginx-proxy
-      VIRTUAL_PORT: 49392
+      VIRTUAL_PORT: 9112
       VIRTUAL_HOST: ${CHARGED_HOST}
       # Let's encrypt settings
       LETSENCRYPT_HOST: ${CHARGED_HOST}
