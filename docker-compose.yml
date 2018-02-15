@@ -55,6 +55,7 @@ services:
       NETWORK: ${NBITCOIN_NETWORK:-regtest}
       API_TOKEN: ${CHARGED_API_TOKEN}
       LN_ALIAS: ${CHARGED_ALIAS}
+      LIGHTNINGD_OPT: "--ipaddr=${CHARGED_IP}"
       VIRTUAL_NETWORK: nginx-proxy
       VIRTUAL_PORT: 9112
       VIRTUAL_HOST: ${CHARGED_HOST}
