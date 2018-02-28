@@ -76,7 +76,7 @@ services:
 
   bitcoind:
     restart: always
-    image: nicolasdorier/docker-bitcoin:0.15.0.1
+    image: nicolasdorier/docker-bitcoin:0.16.0
     environment:
       BITCOIN_EXTRA_ARGS: |
         rpcport=43782
