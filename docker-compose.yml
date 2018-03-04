@@ -50,7 +50,7 @@ services:
 
   lightning-charged:
     restart: always
-    image: shesek/lightning-charge:0.3.1
+    image: shesek/lightning-charge:0.3.3
     environment:
       NETWORK: ${NBITCOIN_NETWORK:-regtest}
       API_TOKEN: ${CHARGED_API_TOKEN}
